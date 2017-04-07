@@ -1,5 +1,27 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+* {
+    box-sizing: border-box;
 }
+img {
+    width: 100%;
+}
+#background-video{
+  position: fixed;
+  top: 50%; left: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+.button-margin {
+    margin-top: 125px;
+}
+.title {
+    font-family: 'Francois One', sans-serif;
+    text-shadow: 2px 2px #17aada; 
+}
+.button-style {
+   color: #17aada !important;
+}
+.add-opacity {
+    opacity: 0.8;
+}
+
+
