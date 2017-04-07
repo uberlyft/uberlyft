@@ -6,7 +6,7 @@ class Signupbutton extends Component {
   render() {
     return <div>
             <div className="row">
-                <div className="col s4 push-s4 button-style" onClick={() => browserHistory.push('/signin')}>
+                <div className="col s4 push-s4 button-style" onClick={() => browserHistory.push('/signup')}>
                     <a className="waves-effect waves-light btn">SIGN UP</a>
               </div>
             </div>
