@@ -23,5 +23,15 @@ img {
 .add-opacity {
     opacity: 0.8;
 }
+/*.alternate-background {
+display: cover;
+}*/
+.progress {
+    height: 25px !important;
+}
+.lyft {
+    width: 50% !important;
+    margin: 0px 0px 0px 93px !important;
+}
 
 

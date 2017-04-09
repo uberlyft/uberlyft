@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
+import { browserHistory } from 'react-router'
 
 class Signup extends Component {
   
@@ -71,7 +72,7 @@ class Signup extends Component {
                                                 </div>  
                                             <div className="row">
                                                 <div className="col center-align">
-                                                    <a className="btn-floating btn-large waves-effect waves-light blue" type="button"><i className="material-icons">add</i></a>
+                                                    <a className="btn-floating btn-large waves-effect waves-light blue" type="button" onClick={() => browserHistory.push('/gettingstarted')}><i className="material-icons">add</i></a>
                                                 </div>
                                             </div>
                                         </form>

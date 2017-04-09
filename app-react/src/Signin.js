@@ -1,7 +1,44 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
+import { browserHistory } from 'react-router'
 
 class Signin extends Component {
+
+    constructor(props) {
+        super(props)
+        this.signin = this.signin.bind(this)
+        this.state = {
+            email: '',
+           password: ''
+        }
+    }
+
+    signin() {
+        if(this.state.email !== '' && this.state.password !== '') {
+        
+        fetch(window.apiHost + '/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+               email: this.state.email,
+               password: this.state.password 
+            })
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
+            console.log(response);
+
+            if (response.token) {
+                sessionStorage.setItem('token', response.token);
+                browserHistory.push('/dashboard');
+            }
+        })
+      }    
+ } 
   
   render() {
     return <div>
@@ -18,9 +55,9 @@ class Signin extends Component {
               </div>
                 <div className="row">
                     <div className="col s12 m5">
-                        <div className="card-panel blue light-blue accent-4 z-depth-5 add-opacity">
-                            <h4 className="center-align white-text">SIGN IN</h4>
-                            <span className="white-text">
+                        <div className="card-panel white z-depth-5 add-opacity">
+                            <h4 className="center-align black-text">SIGN IN</h4>
+                            <span className="black-text">
                                 <div className="row">
                                         <form className="col s12">
                                             <div className="row">
@@ -39,7 +76,7 @@ class Signin extends Component {
                                             </div>
                                             <div className="row">
                                                 <div className="col center-align">
-                                                    <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
+                                                    <a className="btn-floating btn-large waves-effect waves-light red" onClick={() => this.signin()}><i className="material-icons">add</i></a>
                                                 </div>
                                             </div>
                                         </form>
