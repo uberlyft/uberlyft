@@ -3,6 +3,46 @@ import Navbar from './Navbar';
 import { browserHistory } from 'react-router'
 
 class Signup extends Component {
+
+    constructor(props) {
+        super(props)
+        this.signup = this.signup.bind(this)
+        this.state = {
+           name: '',
+           address: '',
+           email: '',
+           password: ''
+        }
+    }
+
+    signup() {
+        if(this.state.name !== '' && this.state.address !== ''&& this.state.email !== ''&& this.state.password !== '') {
+        
+        fetch(window.apiHost + '/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+               name: this.state.name,
+               address: this.state.address,
+               email: this.state.email,
+               password: this.state.password 
+            })
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
+            console.log(response);
+
+            if (response.token) {
+                localStorage.setItem('token', response.token);
+                browserHistory.push('/dashboard');
+            }
+        })
+      }    
+ } 
   
   render() {
     return <div>
@@ -33,32 +73,13 @@ class Signup extends Component {
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s12">
-                                                    <h6>Street Address</h6>
+                                                    <h6>Full Address</h6>
                                                     <input id="street" type="text" className="validate"/>
                                                     <label htmlFor="streetaddress"></label>
                                                 </div>
-                                            </div>
-                                            <div className="row">
-                                                    <div className="input-field inline">
-                                                        <h6>City</h6>
-                                                        <input id="city" type="text" className="validate"/>
-                                                        <label htmlFor="city" data-error="wrong" data-success="right"></label>
-                                                    </div> 
-                                                    <div className="input-field inline">
-                                                        <h6>State</h6>
-                                                        <input id="state" type="text" className="validate"/>
-                                                        <label htmlFor="state" data-error="wrong" data-success="right"></label>
-                                                    </div>
-                                                </div> 
-                                            <div className="row">
-                                                    <div className="input-field inline">
-                                                        <h6>Zip Code</h6>
-                                                        <input id="zip" type="text" className="validate"/>
-                                                        <label htmlFor="zip" data-error="wrong" data-success="right"></label>
-                                                    </div>
-                                                </div>                                                                                                      <div className="row">
+                                            </div>                                                                                                      <div className="row">
                                                     <div className="input-field col s12">
-                                                        <h6>Create a Username</h6>
+                                                        <h6>Email</h6>
                                                         <input id="username" type="text" className="validate"/>
                                                         <label htmlFor="username"></label>
                                                     </div>
@@ -72,7 +93,7 @@ class Signup extends Component {
                                                 </div>  
                                             <div className="row">
                                                 <div className="col center-align">
-                                                    <a className="btn-floating btn-large waves-effect waves-light blue" type="button" onClick={() => browserHistory.push('/gettingstarted')}><i className="material-icons">add</i></a>
+                                                    <a className="btn-floating btn-large waves-effect waves-light green" type="button" onClick={() => this.signup()}><i className="material-icons">add</i></a>
                                                 </div>
                                             </div>
                                         </form>
