@@ -1,24 +1,14 @@
-# README
+About:
+Created to give users a fast and simple way to compare the transportation services from Uber and Lyft, Commuter focuses on making accurate estimations for pickup-times and trip-costs in a single view.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tech:
+Ruby on Rails version 5.0.2
+Postgresql
+Uber API
+Lyft API
+HTML
+JavaScript
+jQuery
+Boostrap
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+How to Use it:
