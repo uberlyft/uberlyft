@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_token :commuter_token
-  # has_many :identities
+  geocoded_by :ip_address
+  after_validation :geocode
+
 
   def self.sign_in_from_omniauth(auth, current_user)
     if current_user

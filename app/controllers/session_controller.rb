@@ -2,12 +2,13 @@ class SessionController < ApplicationController
 
   def create
     auth = request.env['omniauth.auth']
+    Rails.logger.info request.env['omniauth.auth'].inspect
     user = User.sign_in_from_omniauth(auth, current_user)
     session[:user_id] = user.id
     if auth[:provider] == 'uber'
-      redirect_to #lyft's page that will call OAuth
+      redirect_to '/auth/lyft'
     elsif auth[:provider] == 'lyft'
-      redirect_to '/auth/uber'
+      redirect_to '/'
     else #this will only trigger if auth is neither uber or lyft. what do you want to return in that scenario
     end
   end
