@@ -47,10 +47,6 @@ class UsersController < ApplicationController
     # current_location = Geocoder.search(request.remote_ip)
     end_location = Geocoder.search(params[:address])
 
-    Rails.logger.info params[:latitude]
-    Rails.logger.info params[:longitude]
-
-
     uber_locate = u_client.price_estimations(start_latitude: params[:latitude].to_f,
                                             start_longitude: params[:longitude].to_f,
                                             end_latitude: end_location.first.latitude,
@@ -74,7 +70,18 @@ class UsersController < ApplicationController
       config.client_secret = (ENV['UBER_CLIENT_SECRET']).to_s
       config.bearer_token  = current_user.uber_token
     end
-    render json: u_client.history
+    l_client = Lyft::Client.new(
+      client_id: (ENV['LYFT_CLIENT_ID']).to_s,
+      client_secret: (ENV['LYFT_CLIENT_SECRET']).to_s,
+      debug_output: STDOUT,
+      use_sandbox: true
+    )
+
+    uber_lyft_history = []
+    uber_lyft_history<< u_client.history
+    uber_lyft_history<< l_client.user.ride_history(access_token: current_user.lyft_token, start_time: 2.years.ago.iso8601)
+
+    render json: uber_lyft_history
   end
 
   def request_ride # simulated in sandbox, will not request actual ride
