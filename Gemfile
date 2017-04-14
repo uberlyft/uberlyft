@@ -44,7 +44,7 @@ gem 'geocoder'
 gem 'omniauth'
 gem 'omniauth-uber'
 gem "figaro"
-gem 'omniauth-lyft' 
+gem 'omniauth-lyft', '1.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

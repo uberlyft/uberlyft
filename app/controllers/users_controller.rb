@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       config.client_secret = (ENV['UBER_CLIENT_SECRET']).to_s
       config.bearer_token  = current_user.uber_token
     end
-    client.history
+    render json: client.history
   end
 
   def request_ride #simulated in sandbox, will not request actual ride
