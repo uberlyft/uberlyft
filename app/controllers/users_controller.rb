@@ -19,8 +19,11 @@ class UsersController < ApplicationController
       lyft_locate = l_client.availability.eta(access_token: current_user.lyft_token,
                                               lat: current_location.first.latitude,
                                               lng: current_location.first.longitude)
-      # render json: uber_locate
-      render json: lyft_locate
+      uber_lyft_location = []
+      uber_lyft_location<< uber_locate
+      uber_lyft_location<< lyft_locate
+
+      render json: uber_lyft_location
     else
       render json: 'Could not locate this IP'
     end
