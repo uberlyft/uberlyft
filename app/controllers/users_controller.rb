@@ -1,13 +1,29 @@
 class UsersController < ApplicationController
-  #  before_action :require_user, only: [:time_estimate]
+   before_action :require_user, only: [:time_estimate]
 
   def time_estimate
-    client = Uber::Client.new do |config|
+    u_client = Uber::Client.new do |config|
       config.server_token = (ENV['UBER_SERVER_TOKEN']).to_s
     end
+
+    l_client = Lyft::Client.new(
+        client_id: (ENV['LYFT_CLIENT_ID']).to_s,
+        client_secret: (ENV['LYFT_CLIENT_SECRET']).to_s,
+        debug_output: STDOUT,
+        use_sandbox: true
+      )
+
     current_location = Geocoder.search(request.remote_ip)
-    user_locate = client.time_estimations(start_latitude: current_location.first.latitude, start_longitude: current_location.first.longitude)
-    render json: user_locate
+    if current_location
+      uber_locate = u_client.time_estimations(start_latitude: current_location.first.latitude, start_longitude: current_location.first.longitude)
+      lyft_locate = l_client.availability.eta(access_token: current_user.lyft_token,
+                                              lat: current_location.first.latitude,
+                                              lng: current_location.first.longitude)
+      # render json: uber_locate
+      render json: lyft_locate
+    else
+      render json: 'Could not locate this IP'
+    end
   end
 
   def price_estimate
@@ -30,7 +46,7 @@ class UsersController < ApplicationController
     render json: client.history
   end
 
-  def request_ride #simulated in sandbox, will not request actual ride
+  def request_ride # simulated in sandbox, will not request actual ride
     current_location = Geocoder.search(request.remote_ip)
     end_location = Geocoder.search(params[:address])
     client = Uber::Client.new do |config|
