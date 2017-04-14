@@ -24,9 +24,11 @@ class UsersController < ApplicationController
       uber_lyft_location << uber_locate
       uber_lyft_location << lyft_locate
 
+      # # render json: uber_locate
+      # render json: lyft_locate
       render json: uber_lyft_location
     else
-      render json: 'Could not locate this IP'
+      render json: {error: "Could not display this address", status: 400}, status: 400
     end
   end
 
@@ -45,13 +47,17 @@ class UsersController < ApplicationController
     # current_location = Geocoder.search(request.remote_ip)
     end_location = Geocoder.search(params[:address])
 
-    uber_locate = u_client.time_estimations(start_latitude: params[:latitude],
-                                            start_longitude: params[:longitude],
+    Rails.logger.info params[:latitude]
+    Rails.logger.info params[:longitude]
+
+
+    uber_locate = u_client.price_estimations(start_latitude: params[:latitude].to_f,
+                                            start_longitude: params[:longitude].to_f,
                                             end_latitude: end_location.first.latitude,
-                                            end_longitude: end_location.first.latitude)
-    lyft_locate = l_client.availability.eta(access_token: current_user.lyft_token,
-                                            lat: params[:latitude],
-                                            lng: params[:longitude],
+                                            end_longitude: end_location.first.longitude)
+    lyft_locate = l_client.availability.cost(access_token: current_user.lyft_token,
+                                            start_lat: params[:latitude],
+                                            start_lng: params[:longitude],
                                             end_lat: end_location.first.latitude,
                                             end_lng: end_location.first.longitude)
     uber_lyft_location = []
