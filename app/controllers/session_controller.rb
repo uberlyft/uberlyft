@@ -8,7 +8,7 @@ class SessionController < ApplicationController
     if auth[:provider] == 'uber'
       redirect_to '/auth/lyft'
     elsif auth[:provider] == 'lyft'
-      redirect_to '/'
+      redirect_to '/users/time_estimate'
     else #this will only trigger if auth is neither uber or lyft. what do you want to return in that scenario
     end
   end
