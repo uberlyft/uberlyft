@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_token :commuter_token
-  geocoded_by :ip_address
-  after_validation :geocode
+  # geocoded_by :full_street_address
+  # after_validation :geocode
 
 
   def self.sign_in_from_omniauth(auth, current_user)
