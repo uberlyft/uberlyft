@@ -18,7 +18,7 @@ logout() {
 
   render() {
     return <div>
-                  <SideNav trigger={<Button>Menu</Button>} options={{ closeOnClick: true }}>
+                  <SideNav trigger={<Button className={'black'}>Menu</Button>} options={{ closeOnClick: true }}>
                     <SideNavItem userView
                       user={{
                         background: 'streetmapbackground.jpg',
