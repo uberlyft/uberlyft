@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/auth/failure', to: redirect('/')
   get '/users/time_estimate'
   get '/users/price_estimate'
+  get '/users/history'
   scope :api do
     resources :users
 
