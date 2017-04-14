@@ -37,7 +37,7 @@ class User < ApplicationRecord
     user.save
     user
   elsif auth[:provider] == 'lyft' #lyft does not have omniauth so below is probably going to change.
-    user = find_or_create_by(provider: auth['provider'], uid: auth['uid'])
+    user = find_or_create_by(lyft_id: auth['uid'])
     user.lyft_token = auth.credentials.token
     user.lyft_refresh_token = auth.credentials.refresh_token
     user.first_name = auth.info.first_name
