@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Signinbutton from './Signinbutton';
-import Signupbutton from './Signupbutton';
+import Uberbutton from './Uberbutton';
+import Lyftbutton from './Lyftbutton';
+import { browserHistory } from 'react-router'
 
 class Homepage extends Component {
-  
+
   render() {
     return <div>
               <div className="container">
@@ -16,8 +17,8 @@ class Homepage extends Component {
                 </div>
               </div>
               </div>
-              <Signinbutton/>
-              <Signupbutton/>
+              <Uberbutton/>
+              <Lyftbutton/>
 
 
 
