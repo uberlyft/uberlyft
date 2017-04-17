@@ -48,4 +48,24 @@ display: cover;
 .UpdatedText {
   color: red;
 }
-
+.center-button {
+    padding-left: 63px !important;
+}
+.table-row {
+    padding-left: 0px;
+}
+td {
+    padding: 0px !important;
+}
+.font {
+    font-size: 12px;
+}
+.color {
+    color: white !important;
+}
+.input-field label {
+    color: white !important;
+}
+.card-opacity {
+    
+}
