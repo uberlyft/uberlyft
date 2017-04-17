@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       use_sandbox: true
     )
 
-    # current_location = Geocoder.search(request.remote_ip)
     if params[:latitude] && params[:longitude]
       uber_locate = u_client.time_estimations(start_latitude: params[:latitude],
                                               start_longitude: params[:longitude])
@@ -24,8 +23,6 @@ class UsersController < ApplicationController
       uber_lyft_location << uber_locate
       uber_lyft_location << lyft_locate
 
-      # # render json: uber_locate
-      # render json: lyft_locate
       render json: uber_lyft_location
     else
       render json: {error: "Could not display this address", status: 400}, status: 400
@@ -79,26 +76,40 @@ class UsersController < ApplicationController
 
     uber_lyft_history = []
     uber_lyft_history<< u_client.history
-    uber_lyft_history<< l_client.user.ride_history(access_token: current_user.lyft_token, start_time: 2.years.ago.iso8601)
+    uber_lyft_history<< l_client.user.ride_history(access_token: current_user.lyft_token,
+                                                  start_time: 2.years.ago.iso8601)
 
     render json: uber_lyft_history
   end
 
-  def request_ride # simulated in sandbox, will not request actual ride
-    # current_location = Geocoder.search(request.remote_ip)
+  def request_uber_ride
     end_location = Geocoder.search(params[:address])
-    client = Uber::Client.new do |config|
+    u_client = Uber::Client.new do |config|
       config.client_id     = (ENV['UBER_CLIENT_ID']).to_s
       config.client_secret = (ENV['UBER_CLIENT_SECRET']).to_s
       config.bearer_token  = current_user.uber_token
     end
-    client.apply_surge 'product_id', 2.0
 
-    client.trip_request(product_id: product_id,
-                        start_latitude: current_location.first.latitude,
-                        start_longitude: current_location.first.longitude,
-                        end_latitude: end_location.first.latitude,
-                        end_longitude: end_location.first.latitude,
-                        surge_confirmation_id: surge_id)
+    u_client.apply_surge 'product_id', 2.0
+
+    u_client.trip_request(product_id: product_id,
+                          start_latitude: params[:latitude].to_f,
+                          start_longitude: params[:longitude].to_f,
+                          end_latitude: end_location.first.latitude,
+                          end_longitude: end_location.first.longitude)
   end
+
+  def request_lyft_ride
+    l_client = Lyft::Client.new(
+      client_id: (ENV['LYFT_CLIENT_ID']).to_s,
+      client_secret: (ENV['LYFT_CLIENT_SECRET']).to_s,
+      debug_output: STDOUT,
+      use_sandbox: true
+    )
+
+    l_client.rides.request access_token: current_user.lyft_token,
+                            origin: { lat: params[:latitude], lng: params[:longitude] },
+                            ride_type: 'lyft'
+  end
+
 end

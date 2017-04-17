@@ -46,6 +46,7 @@ gem 'omniauth-uber'
 gem "figaro"
 gem 'omniauth-lyft', '1.0.1'
 gem 'pry-rails'
+gem 'factory_girl'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

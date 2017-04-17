@@ -46,13 +46,4 @@ class User < ApplicationRecord
     end
   end
 
-
-
-
-# private
-#
-# def user_params
-#   params.permit()
-# end
-
 end
