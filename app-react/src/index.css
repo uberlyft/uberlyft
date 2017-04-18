@@ -11,7 +11,8 @@ img {
   transform: translate(-50%, -50%);
 }
 .button-margin {
-    margin-top: 125px;
+    margin-top: 30px;
+    margin-bottom: 80px;
     padding: 0px 0px 0px 0px !important;
 }
 .title {
@@ -58,14 +59,34 @@ td {
     padding: 0px !important;
 }
 .font {
-    font-size: 12px;
+    font-size: 20px;
+    font-family: 'Francois One', sans-serif;
 }
 .color {
-    color: white !important;
+    color: black !important;
 }
 .input-field label {
     color: white !important;
 }
+.welcome-font {
+    font-family: 'Merriweather', serif;
+    text-shadow: 0 0 3px darkmagenta;
+}
+.img-size {
+    max-width: 100%;
+}
 .card-opacity {
-    
+    height: 410px;
+    padding: 10px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+    box-shadow: 2px 4px 15px black;
+    opacity: 0.9;
+}
+.foot {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 0px;
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router'
 import Title from './Title';
 import Navbar from './Navbar';
-import { Row, Col, CardPanel, Table } from 'react-materialize';
+import { Row, Col, Table } from 'react-materialize';
+import Foot from './Foot';
 
 class How extends Component {
   
@@ -13,26 +13,31 @@ class How extends Component {
             <Title/>
                 <Row>
                     <Col s={12} m={5}>
-                        <CardPanel className="white card-opacity lighten-4 black-text">
+                        <div className="white card-opacity lighten-4 black-text">
+                            <h5 className="center-align">Follow the steps below to get started using Commuter and start saving!</h5>
                             <Table>
                                 <tbody>
+                                    <br/>
                                     <tr>
-                                    <td><img src="number-one-in-a-circle.png"/></td>
-                                    <td>Eclair</td>
+                                    <td><img className="img-size" src="one.png" alt="number one"/></td>
+                                    <td>Click the "Sign In" button and follow the prompts to sign in to both your Uber and Lyft accounts.</td>
                                     </tr>
+                                    <br/>
                                     <tr>
-                                    <td>Alan</td>
-                                    <td>Jellybean</td>
+                                    <td><img className="img-size" src="two.png" alt="number two"/></td>
+                                    <td>Enter your starting and ending locations.</td>
                                     </tr>
+                                    <br/>
                                     <tr>
-                                    <td>Jonathan</td>
-                                    <td>Lollipop</td>
+                                    <td><img className="img-size" src="three.png" alt="number three"/></td>
+                                    <td>Commute! Use the provided data to compare pricing and distance, and book your ride, directly through our app!</td>
                                     </tr>
                                 </tbody>
                             </Table>
-                        </CardPanel>
+                        </div>
                     </Col>
                 </Row>
+                <Foot/>
           </div>
   }
 }

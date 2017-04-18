@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Signinbutton from './Signinbutton';
-import { browserHistory } from 'react-router'
 
 class Title extends Component {
 
