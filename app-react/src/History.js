@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import { Row, Col, Table } from 'react-materialize';
+import Foot from './Foot';
 
 class History extends Component {
 
@@ -11,11 +12,11 @@ class History extends Component {
             history: ''
         }
     }
-    ridehistory(history) {
+    ridehistory() {
         if (this.state.history !== '') {
 
             fetch('https://538ab3ab.ngrok.io/users/history')
-                .then(function (response) {
+                .then((response) => {
                     return response.json();
                 })
                 .then(response => console.log(response))
@@ -23,10 +24,10 @@ class History extends Component {
     }
     render() {
 
-    let pastrides = this.props.History.map((history, key) => <History key={key} {...history}  />)
+   history = history.map((history, key) => <History key={key} {...history}/>)
 
-    if (pastrides.length === 0) {
-        pastrides = <div className="alert alert-success text-center">Start by adding a task above.</div>
+    if (history.length === 0) {
+        history = <div className="alert alert-success text-center">Start by adding a task above.</div>
     }
 
         return <div>
@@ -37,14 +38,14 @@ class History extends Component {
                         <Table>
                             <tr>
                                 <td>
-                                {pastrides}
+                                {history}
                                 </td>
                             </tr>
                         </Table>
                     </Col>
                 </Row>
             </div>
-
+            <Foot/>
 
         </div>
     }

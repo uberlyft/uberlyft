@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
-import { browserHistory } from 'react-router'
-import { Row, Col, Input, Card, CardTitle, Button, Table } from 'react-materialize';
+import Title from './Title';
+// import Bargraph from './Bargraph';
+import { Row, Col, Input, Button, Table, CardPanel, Modal } from 'react-materialize';
+import Foot from './Foot';
 
 class Comparison extends Component {
 
@@ -74,57 +76,88 @@ class Comparison extends Component {
     render() {
         return <div>
             <Navbar />
+            <Title/>
                 <video id="background-video" loop autoPlay>
                     <source src="video.mov"/>
-                </video>  
-            <Row>
-                <Input value={this.state.from} onChange={(e) => this.setState({from: e.target.value})} className='color' s={6} label="From" />
-                <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={6} label="To" />
+                </video>
                 <div className="container">
                     <Row>
-                        <Col className='s12 center-align'>
-                            <Button waves='light'onClick={() => this.fromto()}>Go!</Button>
+                        <Col s={12} className="center-align">
+                            <Modal header='Directions' trigger={<Button waves='light'>Enter Your Location Here</Button>}>
+                                <Input value={this.state.from} onChange={(e) => this.setState({from: e.target.value})} className='color' s={6} label="From" />
+                                <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={6} label="To" />
+                                <div className="center-align"><Button waves='light'onClick={() => this.fromto()}>Go!</Button></div>
+                            </Modal>  
                         </Col>
                     </Row>
                 </div>
-            </Row>
-
             <div className="container">
-                <Row>
-                    <Card className='small' header={<CardTitle image='uberlogo.png'></CardTitle>}>
-                        <Table className='font'>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Time until Arrival
-                                        </td>
-                                    <td className="table-row">
-                                        {this.state.uber_time_estimate} minutes
-                                        </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Cost
-                                        </td>
-                                    <td className="table-row">
-                                        {this.state.price_estimate}
-                                        </td>
-                                </tr>
-                            </tbody>
-                            <tr>
-                                <Row>
-                                    <Col className="s12 center-align center-button">
-                                        <Button waves='light'>Book with Uber</Button>
-                                    </Col>
-                                </Row>
-                            </tr>
-                        </Table>
-                    </Card>
-                    <Card className='small' header={<CardTitle image='lyftlogo.png'></CardTitle>} actions={[<a href='#'>This is a Link</a>]}>
-                        I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-                        </Card>
-                </Row>
+                    <Row>
+                        <Col s={12}>
+                            <CardPanel className="white lighten-4 black-text">
+                                <Table className='font'>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Arrival in:
+                                            </td>
+                                            <td className="table-row">
+                                                {this.state.uber_time_estimate} minutes
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Cost: 
+                                            </td>
+                                            <td className="table-row">
+                                                {this.state.price_estimate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                                <Col s={12} className="center-align">
+                                    <Button waves='light' className="black">Book with Uber</Button>
+                                </Col>
+                            </CardPanel>
+                        </Col>
+                    </Row>
+                     <Row>
+                        <Col s={12}>
+                            <CardPanel className="white lighten-4 black-text">
+                                <Table className='font'>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Arrival in:
+                                            </td>
+                                            <td className="table-row">
+                                                {this.state.lyft_time_estimate} minutes
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Cost: 
+                                            </td>
+                                            <td className="table-row">
+                                                {this.state.price_estimate}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                                <Col s={12} className="center-align">
+                                    <Button waves='light' className="pink accent-4">Book with Lyft</Button>
+                                </Col>
+                            </CardPanel>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col s={12}>
+                            Bargraph goes here
+                        </Col>
+                    </Row>
             </div>
+            <Foot/>
+
         </div>
     }
 }
