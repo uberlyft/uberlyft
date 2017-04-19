@@ -25,12 +25,11 @@ class History extends Component {
     }
 
     rideHistory() {
-        console.log('change made')
         fetch(window.apiHost + '/users/history', {
             credentials: 'include'
         })
             .then(response => response.json())
-            .then(response => this.setState({history: response}))
+            .then(response => this.setState({history: response[0].histories}))
     }
 
     render() {
