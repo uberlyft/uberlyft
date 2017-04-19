@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     if auth[:provider] == 'uber'
       redirect_to '/auth/lyft'
     elsif auth[:provider] == 'lyft'
-      redirect_to '/users/time_estimate'
+      redirect_to '/comparison'
     else
       render json: {error: "Could not display this provider's authentification", status: 400}, status: 400
     end
