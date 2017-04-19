@@ -13,24 +13,24 @@ class Booklyft extends Component {
         }
     }
 
-  booklyft() {
-        if(this.state.latitude !== '' && this.state.longitude !== '' && this.state.address !== '') {
+//   booklyft() {
+//         if(this.state.latitude !== '' && this.state.longitude !== '' && this.state.address !== '') {
         
-        fetch(window.apiHost + '/users/time_estimate', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-               from: this.state.longitude,
-               to: this.state.latitude,
-               to: this.state.address
-            })
-        })
-        .then(response => response.json())
-      }    
-  }
+//         fetch(window.apiHost + '/users/time_estimate', {
+//             method: 'POST',
+//             credentials: 'include',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                from: this.state.longitude,
+//                to: this.state.latitude,
+//                to: this.state.address
+//             })
+//         })
+//         .then(response => response.json())
+//       }    
+//   }
 
   render() {
     return <div>
