@@ -12,9 +12,11 @@ class Homepage extends Component {
               <div className="container">
                 <Row>
                   <Col s={12}>
-                    <h6 className="welcome-font center-align black-text">Welcome to Commuter&copy;, an app that compares Uber and Lyft to get you the quickest and most affordable rides!</h6>
+                    <div className="welcome-font center-align black-text">Welcome to Commuter, an app that compares Uber and Lyft to get you the quickest and most affordable rides!</div>
                     <br/>
-                    <h6 className="welcome-font center-align white-text">Get started by clicking sign in below:</h6>
+                    <br/>
+                    <br/>
+                    <div className="getstarted-font center-align pink-text text-accent-4">Get started by clicking sign in below:</div>
                   </Col>
                 </Row>
               </div>
