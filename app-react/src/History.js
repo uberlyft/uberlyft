@@ -25,6 +25,7 @@ class History extends Component {
     }
 
     rideHistory() {
+        console.log('change made')
         fetch(window.apiHost + '/users/history', {
             credentials: 'include'
         })
