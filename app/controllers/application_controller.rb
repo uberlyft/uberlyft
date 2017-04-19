@@ -17,5 +17,9 @@ class ApplicationController < ActionController::Base
 
   # helper_method :current_user
 
+  def static
+    render file: 'public/index.html'
+  end
+
 
 end
