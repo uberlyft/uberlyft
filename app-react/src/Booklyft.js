@@ -16,7 +16,7 @@ class Booklyft extends Component {
   booklyft() {
         if(this.state.latitude !== '' && this.state.longitude !== '' && this.state.address !== '') {
         
-        fetch('https://538ab3ab.ngrok.io/users/time_estimate', {
+        fetch('/users/time_estimate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

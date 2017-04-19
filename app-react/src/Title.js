@@ -9,7 +9,7 @@ class Title extends Component {
                  <h1 className="center-align title">Commuter</h1>
                 <div className="col s12">
                   <video id="background-video" loop autoPlay>
-                    <source src="video.mov"/>
+                    <source src="video.mp4"/>
                   </video>     
                 </div>
               </div>
