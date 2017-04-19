@@ -18,14 +18,14 @@ class Comparison extends Component {
             price_estimate: '',
             uber_time_estimate: '',
             lyft_time_estimate: '',
-            from:'',
+            from: navigator.geolocation,
             to: ''
         }
     }
 
     time() {
         if (this.state.uber_time_estimate !== '' && this.state.lyft_time_estimate !== '') {
-            fetch('/users/time_estimate')
+            fetch(window.apiHost + '/users/time_estimate')
                 .then((response) => {
                     return response.json();
                 })
@@ -43,7 +43,7 @@ class Comparison extends Component {
     cost() {
         if (this.state.price_estimate !== '') {
 
-            fetch('/users/price_estimate')
+            fetch(window.apiHost + '/users/price_estimate')
                 .then((response) => {
                     return response.json();
                 })
@@ -55,7 +55,7 @@ class Comparison extends Component {
     fromto() {
         if(this.state.from !== '' && this.state.to !== '') {
         
-        fetch('/users/time_estimate', {
+        fetch(window.apiHost + '/users/time_estimate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -86,8 +86,8 @@ class Comparison extends Component {
                     <Row>
                         <Col s={12} className="center-align">
                             <Modal header='Directions' trigger={<Button waves='light'>Enter Your Location Here</Button>}>
-                                <Input value={this.state.from} onChange={(e) => this.setState({from: e.target.value})} className='color' s={6} label="From" />
-                                <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={6} label="To" />
+                                {/*<Input value={this.state.from} onChange={(e) => this.setState({from: e.target.value})} className='color' s={6} label="From" />*/}
+                                <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={12} label="To" />
                                 <div className="center-align"><Button waves='light'onClick={() => this.fromto()}>Go!</Button></div>
                             </Modal>  
                         </Col>
