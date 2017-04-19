@@ -16,7 +16,7 @@ class Booklyft extends Component {
   booklyft() {
         if(this.state.latitude !== '' && this.state.longitude !== '' && this.state.address !== '') {
         
-        fetch('/users/time_estimate', {
+        fetch(window.apiHost + '/users/time_estimate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

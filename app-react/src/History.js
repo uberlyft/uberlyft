@@ -25,7 +25,7 @@ class History extends Component {
     }
 
     rideHistory() {
-        fetch('/users/history')
+        fetch(window.apiHost + '/users/history')
             .then(response => response.json())
             .then(response => this.setState({history: response}))
     }
