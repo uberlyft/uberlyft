@@ -25,7 +25,9 @@ class Comparison extends Component {
 
     time() {
         if (this.state.uber_time_estimate !== '' && this.state.lyft_time_estimate !== '') {
-            fetch(window.apiHost + '/users/time_estimate')
+            fetch(window.apiHost + '/users/time_estimate', {
+                credentials: 'include'
+            })
                 .then((response) => {
                     return response.json();
                 })
@@ -43,7 +45,9 @@ class Comparison extends Component {
     cost() {
         if (this.state.price_estimate !== '') {
 
-            fetch(window.apiHost + '/users/price_estimate')
+            fetch(window.apiHost + '/users/price_estimate', {
+                credentials: 'include'
+            })
                 .then((response) => {
                     return response.json();
                 })
@@ -57,6 +61,7 @@ class Comparison extends Component {
         
         fetch(window.apiHost + '/users/time_estimate', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
