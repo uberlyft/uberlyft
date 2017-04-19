@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     # root 'home#index'
   end
 
-  get '/:s1(:/s2)(:/s3)' => 'application#static'
+  get '/:s1(:/s2)(:/s3)' => 'home#static'
 
 end
