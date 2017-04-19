@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import Title from './Title';
+import Booklyft from './Booklyft';
+import Bookuber from './Bookuber';
 // import Bargraph from './Bargraph';
 import { Row, Col, Input, Button, Table, CardPanel, Modal } from 'react-materialize';
 import Foot from './Foot';
@@ -53,7 +55,7 @@ class Comparison extends Component {
     fromto() {
         if(this.state.from !== '' && this.state.to !== '') {
         
-        fetch(window.apiHost + '/api/login', {
+        fetch('https://538ab3ab.ngrok.io/users/time_estimate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -116,7 +118,7 @@ class Comparison extends Component {
                                     </tbody>
                                 </Table>
                                 <Col s={12} className="center-align">
-                                    <Button waves='light' className="black">Book with Uber</Button>
+                                    <Bookuber/>
                                 </Col>
                             </CardPanel>
                         </Col>
@@ -145,7 +147,7 @@ class Comparison extends Component {
                                     </tbody>
                                 </Table>
                                 <Col s={12} className="center-align">
-                                    <Button waves='light' className="pink accent-4">Book with Lyft</Button>
+                                    <Booklyft/>
                                 </Col>
                             </CardPanel>
                         </Col>

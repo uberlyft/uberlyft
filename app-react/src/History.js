@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
-import { Row, Col, Table } from 'react-materialize';
+import Title from './Title';
+import Ridehistory from './Ridehistory';
+import { Row, Col } from 'react-materialize';
 import Foot from './Foot';
 
 class History extends Component {
@@ -9,11 +11,17 @@ class History extends Component {
         super(props)
         this.ridehistory = this.ridehistory.bind(this)
         this.state = {
-            history: ''
+            status: '',
+            distance:'',
+            start_time:'',
+            display_name:''
         }
     }
+    componentDidMount(){
+        this.ridehistory()
+    }
     ridehistory() {
-        if (this.state.history !== '') {
+        if (this.state.status !== '' && this.state.distance !== '' && this.state.start_time !== '' && this.state.display_name !== '') {
 
             fetch('https://538ab3ab.ngrok.io/users/history')
                 .then((response) => {
@@ -22,26 +30,18 @@ class History extends Component {
                 .then(response => console.log(response))
         }
     }
+
     render() {
 
-   history = history.map((history, key) => <History key={key} {...history}/>)
-
-    if (history.length === 0) {
-        history = <div className="alert alert-success text-center">Start by adding a task above.</div>
-    }
+//    let rides = this.props.rides.map((ride, key) => <Ridehistory key={key} {...ride} />);
 
         return <div>
             <Navbar />
+            <Title/>
             <div className="container">
                 <Row>
                     <Col className="s12">
-                        <Table>
-                            <tr>
-                                <td>
-                                {history}
-                                </td>
-                            </tr>
-                        </Table>
+                     <Ridehistory/>
                     </Col>
                 </Row>
             </div>
