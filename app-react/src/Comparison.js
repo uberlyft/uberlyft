@@ -25,7 +25,7 @@ class Comparison extends Component {
 
     time() {
         if (this.state.uber_time_estimate !== '' && this.state.lyft_time_estimate !== '') {
-            fetch('https://538ab3ab.ngrok.io/users/time_estimate')
+            fetch('/users/time_estimate')
                 .then((response) => {
                     return response.json();
                 })
@@ -43,7 +43,7 @@ class Comparison extends Component {
     cost() {
         if (this.state.price_estimate !== '') {
 
-            fetch('https://538ab3ab.ngrok.io/users/price_estimate')
+            fetch('/users/price_estimate')
                 .then((response) => {
                     return response.json();
                 })
@@ -55,7 +55,7 @@ class Comparison extends Component {
     fromto() {
         if(this.state.from !== '' && this.state.to !== '') {
         
-        fetch('https://538ab3ab.ngrok.io/users/time_estimate', {
+        fetch('/users/time_estimate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

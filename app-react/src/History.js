@@ -25,7 +25,7 @@ class History extends Component {
     }
 
     rideHistory() {
-        fetch('https://538ab3ab.ngrok.io/users/history')
+        fetch('/users/history')
             .then(response => response.json())
             .then(response => this.setState({history: response}))
     }
