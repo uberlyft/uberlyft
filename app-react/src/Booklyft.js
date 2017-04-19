@@ -18,6 +18,7 @@ class Booklyft extends Component {
         
         fetch(window.apiHost + '/users/time_estimate', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
