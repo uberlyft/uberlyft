@@ -1,8 +1,5 @@
 class HomeController < ApplicationController
-before_action session_check
+  def index; end
 
-def session_check
-  @auth = session[:omniauth] if session[:omniauth]
-end
 
 end
