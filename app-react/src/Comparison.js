@@ -11,72 +11,50 @@ class Comparison extends Component {
 
     constructor(props) {
         super(props)
-        this.time = this.time.bind(this)
-        this.cost = this.cost.bind(this)
         this.fromto = this.fromto.bind(this)
+
         this.state = {
-            price_estimate: '',
+            uber_price_estimate: '',
             uber_time_estimate: '',
+            lyft_price_estimate: '',
             lyft_time_estimate: '',
-            from: navigator.geolocation,
             to: ''
         }
     }
-
-    time() {
-        if (this.state.uber_time_estimate !== '' && this.state.lyft_time_estimate !== '') {
-            fetch(window.apiHost + '/users/time_estimate', {
-                credentials: 'include'
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((response) => {
-                    const uber = response[0][0].estimate / 60
-                    const lyft = response[1].eta_estimates[0].eta_seconds / 60
-
-                    this.setState({
-                        uber_time_estimate: uber,
-                        lyft_time_estimate: lyft
+    
+    fromto() {
+        if(this.state.to !== '') {
+            navigator.geolocation.getCurrentPosition((position) => {
+                fetch(window.apiHost + '/users/price_estimate', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        address: this.state.to
                     })
                 })
-        }
-    }
-    cost() {
-        if (this.state.price_estimate !== '') {
-
-            fetch(window.apiHost + '/users/price_estimate', {
-                credentials: 'include'
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then(function (response) {
+                .then(response => response.json())
+                .then(response => {
                     console.log(response);
+
+                    // const uberPrice = response[0][0].estimate / 60
+                    // const uberTime = response[0][0].estimate / 60
+                    // const lyftPrice = response[1].eta_estimates[0].eta_seconds / 60
+                    // const lyftTime = response[1].eta_estimates[0].eta_seconds / 60
+
+                    // this.setState({
+                    //     to: '',
+                    //     uber_price_estimate: uberPrice,
+                    //     uber_time_estimate: uberTime,
+                    //     lyft_price_estimate: lyftPrice,
+                    //     lyft_time_estimate: lyftTime
+                    // })
                 })
-        }
-    }
-    fromto() {
-        if(this.state.from !== '' && this.state.to !== '') {
-        
-        fetch(window.apiHost + '/users/time_estimate', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-               from: this.state.from,
-               to: this.state.to
             })
-        })
-        .then(response => response.json())
-        .then(history => {
-            this.setState({
-                from: '',
-                to: '',
-            })
-        })
       }    
  } 
 
@@ -84,9 +62,6 @@ class Comparison extends Component {
         return <div>
             <Navbar />
             <Title/>
-                <video id="background-video" loop autoPlay>
-                    <source src="video.mov"/>
-                </video>
                 <div className="container">
                     <Row>
                         <Col s={12} className="center-align">
