@@ -19,6 +19,7 @@ class Signup extends Component {
         
         fetch(window.apiHost + '/api/login', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
