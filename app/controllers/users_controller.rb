@@ -73,7 +73,7 @@ class UsersController < ApplicationController
       debug_output: STDOUT,
       use_sandbox: true
     )
-
+    
     uber_lyft_history = []
     uber_lyft_history<< u_client.history
     uber_lyft_history<< l_client.user.ride_history(access_token: current_user.lyft_token,
