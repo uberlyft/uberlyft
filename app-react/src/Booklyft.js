@@ -34,7 +34,7 @@ class Booklyft extends Component {
 
   render() {
     return <div>
-            <Button waves='light' className="pink accent-4" onClick={() => this.booklyft()}>Book with Lyft</Button>
+            <Button waves='light' className="pink accent-4" onClick={() => location.href='lyft://'}>Book with Lyft</Button>
           </div>
   }
 }
