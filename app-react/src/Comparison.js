@@ -4,7 +4,7 @@ import Title from './Title';
 import Booklyft from './Booklyft';
 import Bookuber from './Bookuber';
 // import Bargraph from './Bargraph';
-import { Row, Col, Input, Button, Table, CardPanel, Modal } from 'react-materialize';
+import { Row, Col, Input, Button, Table, CardPanel } from 'react-materialize';
 import Foot from './Foot';
 
 class Comparison extends Component {
@@ -127,11 +127,6 @@ class Comparison extends Component {
                                     <Booklyft/>
                                 </Col>
                             </CardPanel>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col s={12}>
-                            Bargraph goes here
                         </Col>
                     </Row>
             </div>

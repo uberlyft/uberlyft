@@ -5,7 +5,7 @@ class Booklyft extends Component {
 
    constructor(props) {
         super(props)
-        this.booklyft = this.booklyft.bind(this)
+        // this.booklyft = this.booklyft.bind(this)
         this.state = {
             latitude: '',
             longitude: '',
