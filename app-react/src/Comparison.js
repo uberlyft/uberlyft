@@ -35,6 +35,7 @@ class Comparison extends Component {
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
                         address: this.state.address 
+
                     })
                 })
                 .then(response => response.json())
