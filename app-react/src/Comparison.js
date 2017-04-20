@@ -26,7 +26,7 @@ class Comparison extends Component {
         if(this.state.to !== '') {
             navigator.geolocation.getCurrentPosition((position) => {
                 fetch(window.apiHost + '/users/price_estimate', {
-                    method: 'GET',
+                    method: 'POST',
                     credentials: 'include',
                     headers: {  
                         'Content-Type': 'application/json'
