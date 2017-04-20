@@ -4,74 +4,58 @@ import Title from './Title';
 import Booklyft from './Booklyft';
 import Bookuber from './Bookuber';
 // import Bargraph from './Bargraph';
-import { Row, Col, Input, Button, Table, CardPanel, Modal } from 'react-materialize';
+import { Row, Col, Input, Button, Table, CardPanel } from 'react-materialize';
 import Foot from './Foot';
 
 class Comparison extends Component {
 
     constructor(props) {
         super(props)
-        this.time = this.time.bind(this)
-        this.cost = this.cost.bind(this)
         this.fromto = this.fromto.bind(this)
+
         this.state = {
-            price_estimate: '',
+            uber_price_estimate: '',
             uber_time_estimate: '',
+            lyft_price_estimate: '',
             lyft_time_estimate: '',
-            from:'',
             to: ''
         }
     }
+    
+    fromto() {
+        if(this.state.to !== '') {
+            navigator.geolocation.getCurrentPosition((position) => {
+                fetch(window.apiHost + '/users/price_estimate', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {  
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        address: this.state.address 
 
-    time() {
-        if (this.state.uber_time_estimate !== '' && this.state.lyft_time_estimate !== '') {
-            fetch('https://538ab3ab.ngrok.io/users/time_estimate')
-                .then((response) => {
-                    return response.json();
-                })
-                .then((response) => {
-                    const uber = response[0][0].estimate / 60
-                    const lyft = response[1].eta_estimates[0].eta_seconds / 60
-
-                    this.setState({
-                        uber_time_estimate: uber,
-                        lyft_time_estimate: lyft
                     })
                 })
-        }
-    }
-    cost() {
-        if (this.state.price_estimate !== '') {
-
-            fetch('https://538ab3ab.ngrok.io/users/price_estimate')
-                .then((response) => {
-                    return response.json();
-                })
-                .then(function (response) {
+                .then(response => response.json())
+                .then(response => {
                     console.log(response);
+
+                    // const uberPrice = response[0][0].estimate / 60
+                    // const uberTime = response[0][0].estimate / 60
+                    // const lyftPrice = response[1].eta_estimates[0].eta_seconds / 60
+                    // const lyftTime = response[1].eta_estimates[0].eta_seconds / 60
+
+                    // this.setState({
+                    //     to: '',
+                    //     uber_price_estimate: uberPrice,
+                    //     uber_time_estimate: uberTime,
+                    //     lyft_price_estimate: lyftPrice,
+                    //     lyft_time_estimate: lyftTime
+                    // })
                 })
-        }
-    }
-    fromto() {
-        if(this.state.from !== '' && this.state.to !== '') {
-        
-        fetch('https://538ab3ab.ngrok.io/users/time_estimate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-               from: this.state.from,
-               to: this.state.to
             })
-        })
-        .then(response => response.json())
-        .then(history => {
-            this.setState({
-                from: '',
-                to: '',
-            })
-        })
       }    
  } 
 
@@ -79,17 +63,11 @@ class Comparison extends Component {
         return <div>
             <Navbar />
             <Title/>
-                <video id="background-video" loop autoPlay>
-                    <source src="video.mov"/>
-                </video>
                 <div className="container">
                     <Row>
                         <Col s={12} className="center-align">
-                            <Modal header='Directions' trigger={<Button waves='light'>Enter Your Location Here</Button>}>
-                                <Input value={this.state.from} onChange={(e) => this.setState({from: e.target.value})} className='color' s={6} label="From" />
-                                <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={6} label="To" />
-                                <div className="center-align"><Button waves='light'onClick={() => this.fromto()}>Go!</Button></div>
-                            </Modal>  
+                            <Input value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} className='color' s={12} label="To" />
+                            <div className="center-align"><Button waves='light'onClick={() => this.fromto()}>Go!</Button></div>
                         </Col>
                     </Row>
                 </div>
@@ -150,11 +128,6 @@ class Comparison extends Component {
                                     <Booklyft/>
                                 </Col>
                             </CardPanel>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col s={12}>
-                            Bargraph goes here
                         </Col>
                     </Row>
             </div>

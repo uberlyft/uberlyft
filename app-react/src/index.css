@@ -9,6 +9,7 @@ img {
   top: 50%; left: 50%;
   z-index: -1;
   transform: translate(-50%, -50%);
+  height: 120vh;
 }
 .button-margin {
     margin-bottom: 80px;
@@ -58,13 +59,12 @@ td {
 }
 .welcome-font {
     font-family: 'Francois One', sans-serif;
-    text-shadow: 0 0 18px darkmagenta;
+    text-shadow: 1px 1px white;
     font-size: 17px;
 }
 .getstarted-font {
     font-family: 'Francois One', sans-serif;
-    text-shadow: 0 0 18px white;
-    text-outline: 2px 2px #ff0000;
+    text-shadow: 1px 1px black;
     font-size: 22px;
 }
 .img-size {

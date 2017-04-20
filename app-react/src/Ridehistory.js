@@ -1,34 +1,16 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
-import {  Table } from 'react-materialize';
-
-class Bookuber extends Component {
-  
+class RideHistory extends Component {
 
   render() {
-    return <div>
-            <div className="white card-opacity lighten-4 black-text">
-                <Table>
-                    <thead>
-                        <tr>
-                        <th data-field="price">Car</th>
-                        <th data-field="price">Date</th>
-                        <th data-field="distance">Distance</th>
-                        <th data-field="status">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td>{this.props.display_name}</td>
-                        <td>{this.props.start_time}</td>
-                        <td>{this.props.distance}</td>
-                        <td>{this.props.status}</td>
-                        </tr>
-                    </tbody>
-                </Table>
-                </div>
-          </div>
+    return <tr>
+                <td>{this.props.start_city.display_name}</td>
+                <td>{moment(this.props.start_time).format('MM/DD/YYYY HH:mm:ss')}</td>
+                <td>{Math.round(this.props.distance)} miles</td>
+                <td>{this.props.status}</td>
+            </tr>
   }
 }
 
-export default Bookuber;
+export default RideHistory;
