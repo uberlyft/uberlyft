@@ -20,10 +20,8 @@
 .byebug_history
 
 # Ignore application configuration
-<<<<<<< HEAD
-/config/application.yml
-=======
 /config/application.yml
 
 video.mov
->>>>>>> 2adb6a511e80f46b5de69a9a2f4410155f0402ea
+
+
