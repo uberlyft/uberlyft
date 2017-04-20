@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :require_user, only: [:time_estimate]
+  before_action :require_user, only: [:time_estimate]
 
   def time_estimate
     u_client = Uber::Client.new do |config|
