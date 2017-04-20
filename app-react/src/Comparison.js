@@ -34,7 +34,8 @@ class Comparison extends Component {
                     body: JSON.stringify({
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
-                        address: this.state.to 
+                        address: this.state.address 
+
                     })
                 })
                 .then(response => response.json())
@@ -65,7 +66,7 @@ class Comparison extends Component {
                 <div className="container">
                     <Row>
                         <Col s={12} className="center-align">
-                            <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={12} label="To" />
+                            <Input value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} className='color' s={12} label="To" />
                             <div className="center-align"><Button waves='light'onClick={() => this.fromto()}>Go!</Button></div>
                         </Col>
                     </Row>
