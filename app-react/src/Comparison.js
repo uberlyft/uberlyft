@@ -65,11 +65,8 @@ class Comparison extends Component {
                 <div className="container">
                     <Row>
                         <Col s={12} className="center-align">
-                            <Modal header='Directions' trigger={<Button waves='light'>Enter Your Location Here</Button>}>
-                                {/*<Input value={this.state.from} onChange={(e) => this.setState({from: e.target.value})} className='color' s={6} label="From" />*/}
-                                <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={12} label="To" />
-                                <div className="center-align"><Button waves='light'onClick={() => this.fromto()}>Go!</Button></div>
-                            </Modal>  
+                            <Input value={this.state.to} onChange={(e) => this.setState({to: e.target.value})} className='color' s={12} label="To" />
+                            <div className="center-align"><Button waves='light'onClick={() => this.fromto()}>Go!</Button></div>
                         </Col>
                     </Row>
                 </div>
