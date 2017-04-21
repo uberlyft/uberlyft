@@ -36,25 +36,25 @@ class Comparison extends Component {
             .then(blah => console.log(this.state.address))
     }   
 
-    price_estimate() {
-        if(this.state.to !== '') {
-            navigator.geolocation.getCurrentPosition((position) => {
-                fetch(window.apiHost + '/users/price_estimate', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {  
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                        address: this.state.address 
+    // price_estimate() {
+    //     if(this.state.to !== '') {
+    //         navigator.geolocation.getCurrentPosition((position) => {
+    //             fetch(window.apiHost + '/users/price_estimate', {
+    //                 method: 'POST',
+    //                 credentials: 'include',
+    //                 headers: {  
+    //                     'Content-Type': 'application/json'
+    //                 },
+    //                 body: JSON.stringify({
+    //                     latitude: position.coords.latitude,
+    //                     longitude: position.coords.longitude,
+    //                     address: this.state.address 
 
-                    })
-                })
-                .then(response => response.json())
-                .then(response => {
-                    console.log(response);
+    //                 })
+    //             })
+    //             .then(response => response.json())
+    //             .then(response => {
+    //                 console.log(response);
 
                     // const uberPrice = response[0][0].estimate / 60
                     // const uberTime = response[0][0].estimate / 60
@@ -68,11 +68,11 @@ class Comparison extends Component {
                     //     lyft_price_estimate: lyftPrice,
                     //     lyft_time_estimate: lyftTime
                     // })
-                })
-                .then(blah => this.fromto)
-            })
-      }    
- } 
+//                 })
+//                 .then(blah => this.fromto)
+//             })
+//       }    
+//  } 
 
     render() {
  let uber_estimates = this.state.address.map((estimate, key) => <UberCard key={key} {...estimate} />);
