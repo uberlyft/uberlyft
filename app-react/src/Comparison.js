@@ -18,7 +18,7 @@ class Comparison extends Component {
             uber_time_estimate: '',
             lyft_price_estimate: '',
             lyft_time_estimate: '',
-            to: ''
+            address: ''
         }
     }
     
