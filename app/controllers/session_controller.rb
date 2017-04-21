@@ -12,4 +12,5 @@ class SessionController < ApplicationController
       render json: {error: "Could not display this provider's authentification", status: 400}, status: 400
     end
   end
+
 end
