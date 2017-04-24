@@ -65,8 +65,8 @@ class Comparison extends Component {
  } 
 
     render() {
- let uber_estimates = this.state.address.map((estimate, key) => <UberCard key={key} {...estimate} />);
- let lyft_estimates = this.state.address.map((estimate, key) => <LyftCard key={key} {...estimate} />);
+//  let uber_estimates = this.state.address.map((estimate, key) => <UberCard key={key} {...estimate} />);
+//  let lyft_estimates = this.state.address.map((estimate, key) => <LyftCard key={key} {...estimate} />);
 
         return <div>
             <Navbar />
@@ -83,14 +83,14 @@ class Comparison extends Component {
                 <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                        {uber_estimates}
+                        
                         </CardPanel>
                     </Col>
                 </Row>
                     <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                            {lyft_estimates}
+                            
                         </CardPanel>
                     </Col>
                 </Row>
