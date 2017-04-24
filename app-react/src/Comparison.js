@@ -39,18 +39,8 @@ class Comparison extends Component {
     price_estimate() {
         if(this.state.to !== '') {
             navigator.geolocation.getCurrentPosition((position) => {
-                fetch(window.apiHost + '/users/price_estimate', {
-                    method: 'POST',
+                fetch(window.apiHost + '/users/price_estimate?latitude=' + position.coords.latitude + '&longitude=' + position.coords.longitude + '&address=' + this.state.address, {
                     credentials: 'include',
-                    headers: {  
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                        address: this.state.address 
-
-                    })
                 })
                 .then(response => response.json())
                 .then(response => {
