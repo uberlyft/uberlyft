@@ -11,7 +11,6 @@ class Comparison extends Component {
 
     constructor(props) {
         super(props)
-        // this.fromto = this.fromto.bind(this)
         this.price_estimate = this.price_estimate.bind(this)
 
         this.state = {
@@ -24,18 +23,6 @@ class Comparison extends Component {
         }
     }
     
-    //  fromto() {
-    //     fetch(window.apiHost + '/users/price_estimate', {
-    //         credentials: 'include'
-    //     })
-    //         .then(response => response.json())
-    //         .then(response => this.setState({
-    //             address: response,
-    //             lyft: response.cost_estimates
-    //         }))
-    //         .then(blah => console.log(this.state.address))
-    // }   
-
     price_estimate() {
         if(this.state.to !== '') {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -86,14 +73,14 @@ class Comparison extends Component {
                 <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                        <UberCard/>
+                        <UberCard uber_price={this.state.uber_time_estimate} uber_time={this.state.uber_price_estimate}/>
                         </CardPanel>
                     </Col>
                 </Row>
                     <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                        <LyftCard/>
+                        <LyftCard  />
                         </CardPanel>
                     </Col>
                 </Row>
