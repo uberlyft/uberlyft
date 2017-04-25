@@ -42,6 +42,12 @@ class UsersController < ApplicationController
     )
 
     # current_location = Geocoder.search(request.remote_ip)
+    uber_locateT = u_client.time_estimations(start_latitude: params[:latitude],
+                                            start_longitude: params[:longitude])
+    lyft_locateT = l_client.availability.eta(access_token: current_user.lyft_token,
+                                            lat: params[:latitude],
+                                            lng: params[:longitude])
+
     end_location = Geocoder.search(params[:address])
 
     uber_locate = u_client.price_estimations(start_latitude: params[:latitude].to_f,
@@ -56,6 +62,8 @@ class UsersController < ApplicationController
     uber_lyft_location = []
     uber_lyft_location << uber_locate
     uber_lyft_location << lyft_locate
+    uber_lyft_location << uber_locateT
+    uber_lyft_location << lyft_locateT
 
     render json: uber_lyft_location
   end

@@ -11,9 +11,7 @@ Rails.application.routes.draw do
 
 
     get '/associate', to: 'session#associate_user'
-    # get '/auth/lyft' to:
-
-    # root 'home#index'
+    
   end
 
   get '/:s1(:/s2)(:/s3)' => 'home#static'
