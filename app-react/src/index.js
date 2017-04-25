@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Routes from './Routes';
 import './index.css';
 
-window.apiHost = 'https://e861e5c0.ngrok.io';
+window.apiHost = 'https://secure-harbor-46339.herokuapp.com';
 
 ReactDOM.render(
   <Routes/>,
