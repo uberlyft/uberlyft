@@ -73,7 +73,7 @@ class Comparison extends Component {
                 <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                        <UberCard uber_price={this.state.uber_time_estimate} uber_time={this.state.uber_price_estimate}/>
+                        <UberCard uber_price={this.state.uber_price_estimate} uber_time={this.state.uber_time_estimate}/>
                         </CardPanel>
                     </Col>
                 </Row>
