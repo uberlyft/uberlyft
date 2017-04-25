@@ -31,7 +31,7 @@ class UberCard extends Component {
                                 Cost: 
                             </td>
                             <td className="table-row">
-                                {this.props.lyft_max_price} - ${this.props.lyft_min_price}
+                                ${this.props.lyft_max_price} - ${this.props.lyft_min_price}
                             </td>
                         </tr>
                     </tbody>
