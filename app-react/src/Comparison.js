@@ -11,7 +11,7 @@ class Comparison extends Component {
 
     constructor(props) {
         super(props)
-        this.fromto = this.fromto.bind(this)
+        // this.fromto = this.fromto.bind(this)
         this.price_estimate = this.price_estimate.bind(this)
 
         this.state = {
