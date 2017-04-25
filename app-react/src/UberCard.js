@@ -5,6 +5,14 @@ import { Col, Table} from 'react-materialize';
 
 class UberCard extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            uber_price_estimate: '',
+            uber_time_estimate: '',
+        }
+    }
+
   render() {
 
     return <div>
