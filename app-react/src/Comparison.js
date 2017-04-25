@@ -61,6 +61,7 @@ class Comparison extends Component {
                     })
                 })
                 .then(blah => this.fromto)
+                .then(boo => console.log(this.state.uber_time_estimate))
             })
       }    
  } 
