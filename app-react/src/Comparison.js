@@ -15,10 +15,10 @@ class Comparison extends Component {
         this.price_estimate = this.price_estimate.bind(this)
 
         this.state = {
-            uber_price_estimate: '',
-            uber_time_estimate: '',
-            lyft_price_estimate: '',
-            lyft_time_estimate: '',
+            uber_price_estimate: [],
+            uber_time_estimate: [],
+            lyft_price_estimate: [],
+            lyft_time_estimate: [],
             address: []
         }
     }
@@ -66,8 +66,10 @@ class Comparison extends Component {
  } 
 
     render() {
- let uber_estimates = this.props.address.map((estimate, key) => <UberCard key={key} {...estimate} />);
- let lyft_estimates = this.props.address.map((estimate, key) => <LyftCard key={key} {...estimate} />);
+ let uber_time_estimates = this.state. uber_time_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
+ let uber_price_estimates = this.state.uber_price_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
+ let lyft_time_estimates = this.state.lyft_time_estimates.map((estimate, key) => <LyftCard key={key} {...estimate} />);
+ let lyft_price_estimates = this.state.lyft_price_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
 
         return <div>
             <Navbar />
@@ -84,14 +86,16 @@ class Comparison extends Component {
                 <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                        {uber_estimates}
+                        {uber_time_estimates}
+                        {uber_price_estimates}
                         </CardPanel>
                     </Col>
                 </Row>
                     <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                            {lyft_estimates}
+                            {lyft_time_estimates}
+                            {lyft_price_estimates}
                         </CardPanel>
                     </Col>
                 </Row>
