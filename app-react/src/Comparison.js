@@ -15,10 +15,10 @@ class Comparison extends Component {
         this.price_estimate = this.price_estimate.bind(this)
 
         this.state = {
-            uber_price_estimate: [],
-            uber_time_estimate: [],
-            lyft_price_estimate: [],
-            lyft_time_estimate: [],
+            uber_price_estimate: '',
+            uber_time_estimate: '',
+            lyft_price_estimate: '',
+            lyft_time_estimate: '',
             address: []
         }
     }
@@ -66,10 +66,10 @@ class Comparison extends Component {
  } 
 
     render() {
- let uber_time_estimates = this.state. uber_time_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
- let uber_price_estimates = this.state.uber_price_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
- let lyft_time_estimates = this.state.lyft_time_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
- let lyft_price_estimates = this.state.lyft_price_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
+ let uber_time_estimates = this.props.uber_time_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
+ let uber_price_estimates = this.props.uber_price_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
+ let lyft_time_estimates = this.props.lyft_time_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
+ let lyft_price_estimates = this.props.lyft_price_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
 
         return <div>
             <Navbar />
