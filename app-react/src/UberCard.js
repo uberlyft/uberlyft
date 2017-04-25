@@ -12,9 +12,6 @@ class UberCard extends Component {
             uber_time_estimate: '',
         }
     }
-componentDidMount(){ 
-    console.log(this.props)
-}
 
   render() {
 
@@ -34,7 +31,7 @@ componentDidMount(){
                             Cost: 
                         </td>
                         <td className="table-row">
-                            {this.state.uber_price_estimate}
+                            {this.props.uber_price}
                         </td>
                     </tr>
                 </tbody>

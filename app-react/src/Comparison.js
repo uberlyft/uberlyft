@@ -80,8 +80,8 @@ class Comparison extends Component {
                     <Row>
                     <Col s={12}>
                         <CardPanel className="white lighten-4 black-text">
-                        <LyftCard  />
-                        </CardPanel>
+                        <LyftCard lyft_min_price={this.state.lyft_price_min_estimate} lyft_max_price={this.state.lyft_price_max_estimate} lyft_time={this.state.lyft_time_estimate} />
+                        </CardPanel>_
                     </Col>
                 </Row>
             </div>
