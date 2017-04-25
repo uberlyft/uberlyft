@@ -5,6 +5,18 @@ import { Col, Table} from 'react-materialize';
 
 class UberCard extends Component {
 
+    constructor(props) {
+        super(props)
+        // this.fromto = this.fromto.bind(this)
+        this.price_estimate = this.price_estimate.bind(this)
+
+        this.state = {
+            lyft_price_min_estimate: '',
+            lyft_price_max_estimate: '',
+            lyft_time_estimate: '',
+        }
+    }
+
   render() {
     return <div>
                 <Table className='font'>
