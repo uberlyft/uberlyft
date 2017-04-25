@@ -12,6 +12,9 @@ class UberCard extends Component {
             uber_time_estimate: '',
         }
     }
+componentDidMount(){ 
+    console.log(this.props)
+}
 
   render() {
 
@@ -23,7 +26,7 @@ class UberCard extends Component {
                             Arrival in:
                         </td>
                         <td className="table-row">
-                            {this.state.uber_time_estimate} minutes
+                            {this.props.uber_time} minutes
                         </td>
                     </tr>
                     <tr>
