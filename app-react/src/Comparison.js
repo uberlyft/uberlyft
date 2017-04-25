@@ -45,11 +45,11 @@ class Comparison extends Component {
                 .then(response => {
                     console.log(response);
 
-                    const uberPrice = response[0][0].estimate
-                    const uberTime = response[2][0].estimate / 60
-                    const lyftPriceMin = response[1].cost_estimates[1].estimated_cost_cents_min / 100
-                    const lyftPriceMax = response[1].cost_estimates[1].estimated_cost_cents_max / 100
-                    const lyftTime = response[3].eta_estimates[0].eta_seconds / 60
+                    const uberPrice = response[0][0][0].estimate
+                    const uberTime = response[0][2][0].estimate / 60
+                    const lyftPriceMin = response[0][1].cost_estimates[1].estimated_cost_cents_min / 100
+                    const lyftPriceMax = response[0][1].cost_estimates[1].estimated_cost_cents_max / 100
+                    const lyftTime = response[0][3].eta_estimates[0].eta_seconds / 60
 
                     this.setState({
                         address: '',
@@ -65,7 +65,6 @@ class Comparison extends Component {
  } 
 
     render() {
-console.log(this.state.uber_time_estimate)
  let uber_time_estimates = this.state.uber_time_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
  let uber_price_estimates = this.state.uber_price_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
  let lyft_time_estimates = this.state.lyft_time_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
