@@ -23,7 +23,7 @@ class UberCard extends Component {
                                 Arrival in:
                             </td>
                             <td className="table-row">
-                                 {this.state.lyft_time_estimate} minutes
+                                 {this.props.lyft_time} minutes
                             </td>
                         </tr>
                         <tr>
@@ -31,7 +31,7 @@ class UberCard extends Component {
                                 Cost: 
                             </td>
                             <td className="table-row">
-                                {this.state.lyft_price_min_estimate} - {this.props.lyft_price_max_estimate}
+                                {this.props.lyft_max_price} - ${this.props.lyft_min_price}
                             </td>
                         </tr>
                     </tbody>
