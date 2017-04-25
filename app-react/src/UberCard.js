@@ -6,6 +6,7 @@ import { Col, Table} from 'react-materialize';
 class UberCard extends Component {
 
   render() {
+
     return <div>
             <Table className='font'>
                 <tbody>
@@ -22,7 +23,7 @@ class UberCard extends Component {
                             Cost: 
                         </td>
                         <td className="table-row">
-                            {this.props.price_estimate}
+                            {this.props.uber_price_estimate}
                         </td>
                     </tr>
                 </tbody>
