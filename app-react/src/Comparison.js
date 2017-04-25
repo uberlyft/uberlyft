@@ -15,10 +15,11 @@ class Comparison extends Component {
         this.price_estimate = this.price_estimate.bind(this)
 
         this.state = {
-            uber_price_estimate: [],
-            uber_time_estimate: [],
-            lyft_price_estimate: [],
-            lyft_time_estimate: [],
+            uber_price_estimate: '',
+            uber_time_estimate: '',
+            lyft_price_min_estimate: '',
+            lyft_price_max_estimate: '',
+            lyft_time_estimate: '',
             address: []
         }
     }
