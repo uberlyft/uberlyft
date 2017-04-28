@@ -46,7 +46,7 @@ class History extends Component {
                                 <thead>
                                     <tr className="center-align">
                                     <th data-field="price">Car</th>
-                                    <th data-field="price">Date</th>
+                                    <th data-field="Date">Date</th>
                                     <th data-field="distance">Distance</th>
                                     <th data-field="status">Status</th>
                                     </tr>
