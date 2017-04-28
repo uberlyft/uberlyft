@@ -25,12 +25,12 @@ class How extends Component {
                                     <br/>
                                     <tr>
                                     <td><img className="img-size" src="two.png" alt="number two"/></td>
-                                    <td>Enter your starting and ending locations.</td>
+                                    <td>Enter your destination.</td>
                                     </tr>
                                     <br/>
                                     <tr>
                                     <td><img className="img-size" src="three.png" alt="number three"/></td>
-                                    <td>Commute! Use the provided data to compare pricing and distance, and book your ride, directly through our app!</td>
+                                    <td>Commute! Use the provided data to compare pricing and arrival times, and book your ride, directly through our app!</td>
                                     </tr>
                                 </tbody>
                             </Table>
