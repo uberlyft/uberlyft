@@ -52,10 +52,11 @@ td {
     font-family: 'Francois One', sans-serif;
 }
 .color {
-    color: white !important;
+    color: black !important;
 }
 .input-field label {
     color: white !important;
+    font-family: 'Francois One', sans-serif;
 }
 .welcome-font {
     font-family: 'Francois One', sans-serif;
