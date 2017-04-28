@@ -19,14 +19,7 @@ class Navbar extends Component {
   render() {
     return <div>
                   <SideNav trigger={<Button className={'black'}>Menu</Button>} options={{ closeOnClick: true }}>
-                    <SideNavItem userView
-                      user={{
-                        background: 'streetmapbackground.jpg',
-                        picture: 'user.png',
-                        first_name: 'John Doe',
-                        email: 'jdandturk@gmail.com'
-                      }}
-                    />
+                    <SideNavItem userView />
                     <SideNavItem onClick={() => browserHistory.push('/comparison')}><i className="fa fa-home fa-2x" aria-hidden="true"></i>HOME</SideNavItem>
                     <SideNavItem onClick={() => browserHistory.push('/how')}><i className="fa fa-wrench fa-2x" aria-hidden="true"></i>HOW IT WORKS</SideNavItem>
                     <SideNavItem onClick={() => browserHistory.push('/comparison')}><i className="fa fa-play fa-2x" aria-hidden="true"></i>RIDE REQUEST</SideNavItem>

@@ -53,11 +53,6 @@ class Comparison extends Component {
  } 
 
     render() {
-//  let uber_time_estimates = this.state.uber_time_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
-//  let uber_price_estimates = this.state.uber_price_estimate.map((estimate, key) => <UberCard key={key} {...estimate} />);
-//  let lyft_time_estimates = this.state.lyft_time_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
-//  let lyft_price_estimates = this.state.lyft_price_estimate.map((estimate, key) => <LyftCard key={key} {...estimate} />);
-
         return <div>
             <Navbar />
             <Title/>
